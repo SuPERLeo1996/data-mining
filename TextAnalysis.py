@@ -10,7 +10,7 @@ word_list = jieba.cut(text, cut_all=False)
 wl_space_split = " ".join(word_list)
 print(wl_space_split)
 
-my_word_cloud = WordCloud().generate(wl_space_split)
+my_word_cloud = WordCloud(font_path="simhei.ttf").generate(wl_space_split)
 
 # 显示词云图
 plt.imshow(my_word_cloud)
