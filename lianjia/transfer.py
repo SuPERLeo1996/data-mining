@@ -24,6 +24,23 @@ if __name__ == '__main__':
         for line in list_file.readlines():
             infos.append(line.strip())
 
+    with open('detail7.csv', 'r', encoding='utf-8') as list_file:
+        for line in list_file.readlines():
+            infos.append(line.strip())
+
+    with open('detail8.csv', 'r', encoding='utf-8') as list_file:
+        for line in list_file.readlines():
+            infos.append(line.strip())
+
+
+    with open('detail9.csv', 'r', encoding='utf-8') as list_file:
+        for line in list_file.readlines():
+            infos.append(line.strip())
+
+    with open('detail10.csv', 'r', encoding='utf-8') as list_file:
+        for line in list_file.readlines():
+            infos.append(line.strip())
+
     with open('detail.csv', 'w', encoding='utf-8') as file:
         for info in infos:
             file.writelines(info+"\n")

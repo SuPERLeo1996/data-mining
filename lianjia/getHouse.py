@@ -20,11 +20,14 @@ def max_page(url):
 
 def house_list():
     max = max_page("https://sh.lianjia.com/ershoufang")
+    print("max" + str(max))
     with open('list.csv', 'w', encoding='utf-8') as output_file:
         for page in range(1, max + 1):
             url = "https://sh.lianjia.com/ershoufang/pg{}/".format(page)
             response = requests.get(url, headers={"User-Agent": UserAgent().random})
             source = response.text
+            print(page)
+            print(url)
             soup = BeautifulSoup(source, "html.parser")
             links = soup.find_all("a", class_="noresultRecommend img LOGCLICKDATA")
             for i in links:
