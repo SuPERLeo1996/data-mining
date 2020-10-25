@@ -14,7 +14,7 @@ def request(url):
 
             detail = {}
 
-            detail["价格"] = soup.find("span", class_="total").text
+            detail["价格"] = soup.find("span", class_="price").find("span", class_="total").text
             detail["单价"] = soup.find("span", class_="unitPriceValue").text
             detail["小区"] = soup.find("div", class_="communityName").find("a", class_="info").text
             detail["所在区域"] = soup.find("div", class_="areaName").find("span", class_="info").text
@@ -83,39 +83,43 @@ if __name__ == '__main__':
         for line in list_file.readlines():
             infos.append(line.strip())
     p1 = multiprocessing.Process(target=get, args=(infos[:300], 1))
-    p2 = multiprocessing.Process(target=get, args=(infos[300:600], 2))
-    p3 = multiprocessing.Process(target=get, args=(infos[600:900], 3))
-    p4 = multiprocessing.Process(target=get, args=(infos[900:1200], 4))
-    p5 = multiprocessing.Process(target=get, args=(infos[1200:1500], 5))
-    p6 = multiprocessing.Process(target=get, args=(infos[1500:1800], 6))
-    p7 = multiprocessing.Process(target=get, args=(infos[1800:2100], 7))
-    p8 = multiprocessing.Process(target=get, args=(infos[2100:2400], 8))
-    p9 = multiprocessing.Process(target=get, args=(infos[2400:2700], 9))
-    p10 = multiprocessing.Process(target=get, args=(infos[2700:], 10))
+    # p2 = multiprocessing.Process(target=get, args=(infos[300:600], 2))
+    # p3 = multiprocessing.Process(target=get, args=(infos[600:900], 3))
+    # p4 = multiprocessing.Process(target=get, args=(infos[900:1200], 4))
+    # p5 = multiprocessing.Process(target=get, args=(infos[1200:1500], 5))
+    # p6 = multiprocessing.Process(target=get, args=(infos[1500:1800], 6))
+    # p7 = multiprocessing.Process(target=get, args=(infos[1800:2100], 7))
+    # p8 = multiprocessing.Process(target=get, args=(infos[2100:2400], 8))
+    # p9 = multiprocessing.Process(target=get, args=(infos[2400:2700], 9))
+    # p10 = multiprocessing.Process(target=get, args=(infos[2700:], 10))
 
     p1.deamon = True
-    p2.deamon = True
-    p3.deamon = True
-    p4.deamon = True
-    p5.deamon = True
-    p6.deamon = True
+    # p2.deamon = True
+    # p3.deamon = True
+    # p4.deamon = True
+    # p5.deamon = True
+    # p6.deamon = True
+    # p7.deamon = True
+    # p8.deamon = True
+    # p9.deamon = True
+    # p10.deamon = True
     p1.start()
-    p2.start()
-    p3.start()
-    p4.start()
-    p5.start()
-    p6.start()
-    p7.start()
-    p8.start()
-    p9.start()
-    p10.start()
+    # p2.start()
+    # p3.start()
+    # p4.start()
+    # p5.start()
+    # p6.start()
+    # p7.start()
+    # p8.start()
+    # p9.start()
+    # p10.start()
     p1.join()
-    p2.join()
-    p3.join()
-    p4.join()
-    p5.join()
-    p6.join()
-    p7.join()
-    p8.join()
-    p9.join()
-    p10.join()
+    # p2.join()
+    # p3.join()
+    # p4.join()
+    # p5.join()
+    # p6.join()
+    # p7.join()
+    # p8.join()
+    # p9.join()
+    # p10.join()
