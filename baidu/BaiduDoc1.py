@@ -8,7 +8,7 @@ import time
 
 def use_chrome(url):
     profile = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(executable_path="d:\\chromedriver.exe")
+    driver = webdriver.Chrome(executable_path="C:\\Users\\baixing\\Downloads\\chromedriver.exe")
     driver.get(url)
     driver.implicitly_wait(100)
     element = WebDriverWait(driver, 10)
