@@ -31,5 +31,6 @@ input = wait.until(
     EC.presence_of_all_elements_located((By.CSS_SELECTOR, '#view-owner'))
 )
 
+# todo 需要做模拟点击拿到手机号
 phone_btn = browser.find_element_by_css_selector('#view-phone-left')
 ActionChains(browser).click(phone_btn).perform()
