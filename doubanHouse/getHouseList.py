@@ -3,11 +3,7 @@ from bs4 import BeautifulSoup
 import pymysql
 from fake_useragent import UserAgent
 import time
-import redis
 
-# pool = redis.ConnectionPool(host='172.17.0.1', port=6379, decode_responses=True)
-# pool = redis.ConnectionPool(host='106.14.25.134', port=6379, decode_responses=True)
-# r = redis.Redis(connection_pool=pool)
 
 # 打开数据库连接
 # db = pymysql.connect(host="172.17.0.1", port=3306, database="hogwarts", user="root", password="root")
@@ -58,7 +54,7 @@ def parse_data(soup, cursor, catalog_id):
 
 def begin(item):
     suffix = "discussion?start="
-    total = 10
+    total = 8
     step = 25
     catalog_id = item["id"]
     start = 0
@@ -83,12 +79,16 @@ cursor.execute("SELECT id,url FROM t_catalog")
 # 使用 fetchone() 方法获取单条数据.
 data = cursor.fetchall()
 
-# spider_index = int(r.get("spider:index"))
-# mod = spider_index % 9
+cursor.execute("SELECT * FROM t_index")
+index = cursor.fetchone()
+spider_index = int(index["index"])
+
+mod = spider_index % 9
 for datum in data:
-    # if datum["id"] == mod + 1:
-    begin(datum)
-        # r.set("spider:index",spider_index + 1)
+    if datum["id"] == mod + 1:
+        begin(datum)
+        cursor.execute("UPDATE t_index SET `index` = `index` + 1")
+        db.commit()
 
 # 关闭数据库连接
 db.close()
